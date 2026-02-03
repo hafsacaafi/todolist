@@ -1,0 +1,10 @@
+[project]
+name = "todo-list"
+language = "php"
+version = "8.2"
+
+[build]
+command = ""
+
+[start]
+command = "php -S 0.0.0.0:8080 -t ."
