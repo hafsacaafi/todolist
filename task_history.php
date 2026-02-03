@@ -1,4 +1,6 @@
-<?php include 'database.php'; ?>
+<?php include 'database.php';
+$history_count = $conn->query("SELECT COUNT(*) as cnt FROM task_history")->fetch_assoc()['cnt'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +39,13 @@
                     <a href="index.php" class="btn btn-secondary">
                         <i class="fas fa-arrow-left"></i> Back to To-Do List
                     </a>
+                    <?php if ($history_count > 0): ?>
+                        <form action="clear_history.php" method="post" onsubmit="return confirm('Are you sure you want to clear all task history? This cannot be undone.');" class="d-inline ms-2">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i> Clear History
+                            </button>
+                        </form>
+                    <?php endif; ?>
                 </div>
 
                 <ul class="list-group">
